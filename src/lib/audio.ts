@@ -1,4 +1,4 @@
-import type { DecodedAudioPayload } from "../types";
+import type { DecodedAudioPayload } from "./whispercpp/types";
 
 export async function decodeAndResampleAudio(
   file: File,

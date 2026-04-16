@@ -1,0 +1,81 @@
+:root {
+  color-scheme: dark;
+  font-family:
+    Inter,
+    "Segoe UI",
+    "Helvetica Neue",
+    sans-serif;
+  background: #000;
+  color: #fff;
+  --bg: #000;
+  --surface: #050505;
+  --surface-strong: #0a0a0a;
+  --surface-raised: #101010;
+  --line: #1a1a1a;
+  --line-strong: #262626;
+  --text-main: #fff;
+  --text-soft: rgba(255, 255, 255, 0.72);
+  --text-muted: rgba(255, 255, 255, 0.44);
+  --accent: #1db954;
+  --accent-soft: rgba(29, 185, 84, 0.12);
+  --accent-line: rgba(29, 185, 84, 0.32);
+  --danger: #ff4d4f;
+  --danger-soft: rgba(255, 77, 79, 0.12);
+  --danger-line: rgba(255, 77, 79, 0.28);
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #000;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+button,
+select,
+textarea,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dd,
+dt {
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

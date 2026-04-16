@@ -1,0 +1,130 @@
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.control-grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 520px) {
+  .control-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.control-field {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--text-soft);
+}
+
+.control-field span {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.control-hint {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-soft);
+}
+
+.control-grid-full {
+  grid-column: 1 / -1;
+}
+
+.inline-error {
+  color: #ff8d8e;
+  font-size: 0.92rem;
+}
+
+select {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: #000;
+  color: var(--text-main);
+  padding: 0.9rem 1rem;
+}
+
+.primary-button,
+.secondary-button,
+.ghost-button,
+.danger-button {
+  min-height: 3rem;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.ghost-button:hover,
+.danger-button:hover {
+  transform: translateY(-1px);
+}
+
+.primary-button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  font-weight: 700;
+}
+
+.secondary-button {
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+  color: #9cf0b9;
+}
+
+.ghost-button {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--text-main);
+}
+
+.danger-button {
+  background: var(--danger-soft);
+  border-color: var(--danger-line);
+  color: #ff9d9e;
+}
+
+select:focus-visible,
+.transcript-box:focus-visible,
+.primary-button:focus-visible,
+.secondary-button:focus-visible,
+.ghost-button:focus-visible,
+.danger-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+
+.primary-button:disabled,
+.secondary-button:disabled,
+.ghost-button:disabled,
+.danger-button:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 639px) {
+  .button-row > * {
+    width: 100%;
+    justify-content: center;
+  }
+}

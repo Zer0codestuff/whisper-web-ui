@@ -23,7 +23,6 @@
   var cachedModelBuf = null;
   var cachedModelId = null;
   var printBuffer = [];
-  var cancelRequested = false;
   /** While whisper.cpp is running `full_default` / draining pthread logs */
   var transcribeActive = false;
   /** Audio duration (seconds) for the active transcribe job — used to estimate segment progress */
@@ -339,11 +338,6 @@
     var lastWaitRampEmit = 0;
     return new Promise(function (resolve, reject) {
       function tick() {
-        if (cancelRequested) {
-          transcribeActive = false;
-          reject(new Error("Transcription cancelled."));
-          return;
-        }
         var blob = printBuffer.join("\n");
         if (blob.indexOf("total time =") !== -1 && blob.indexOf("encode time =") !== -1) {
           transcribeActive = false;
@@ -406,9 +400,6 @@
             return handleDeleteModel(data.modelId);
           case "transcribe":
             return handleTranscribe(data);
-          case "cancel":
-            cancelRequested = true;
-            return Promise.resolve();
           default:
             return Promise.resolve();
         }
@@ -441,8 +432,7 @@
               modelId: modelId,
               installed: true,
               pending: false,
-              sizeBytes: sizeBytes || REGISTRY[modelId].sizeBytes,
-              updatedAt: Date.now()
+              sizeBytes: sizeBytes || REGISTRY[modelId].sizeBytes
             }
           });
           return;
@@ -487,8 +477,7 @@
                 modelId: modelId,
                 installed: true,
                 pending: false,
-                sizeBytes: sizeBytes || REGISTRY[modelId].sizeBytes,
-                updatedAt: Date.now()
+              sizeBytes: sizeBytes || REGISTRY[modelId].sizeBytes
               }
             });
           })
@@ -535,9 +524,6 @@
     var modelId = request.modelId;
     var lang = request.language === "auto" ? "auto" : request.language;
     var nthreads = request.threads && request.threads > 0 ? request.threads : 4;
-    var translate = Boolean(request.translate);
-    cancelRequested = false;
-    var startedAt = performance.now();
 
     return ensureRuntime()
       .then(function () {
@@ -579,7 +565,7 @@
           type: "progress",
           progress: { stage: "transcribe", percent: 9, message: "Running whisper.cpp…" }
         });
-        var ret = self.Module.full_default(instance, samples, lang, nthreads, translate);
+        var ret = self.Module.full_default(instance, samples, lang, nthreads, false);
         if (ret !== 0) {
           transcribeActive = false;
           throw new Error("whisper.cpp returned error code " + ret);
@@ -599,7 +585,6 @@
           result: {
             text: text,
             durationSeconds: audio.durationSeconds,
-            elapsedMs: Math.round(performance.now() - startedAt),
             outputName: data.outputName || "transcript.txt"
           }
         });

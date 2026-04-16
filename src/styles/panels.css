@@ -1,0 +1,358 @@
+.panel {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.panel-heading {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.panel-heading > div {
+  min-width: 0;
+}
+
+.panel-heading h2 {
+  font-size: clamp(1.15rem, 4vw, 1.55rem);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.panel-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: #000;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  flex: 0 0 auto;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.65rem;
+  padding: 1.25rem 1.15rem;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--line-strong);
+  background: #000;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.dropzone-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.dropzone-icon svg {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.dropzone:hover,
+.dropzone:focus-visible,
+.dropzone-active {
+  border-color: var(--accent-line);
+  background: #030303;
+  transform: translateY(-1px);
+}
+
+.dropzone-eyebrow {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.dropzone-title {
+  max-width: 100%;
+  font-size: clamp(1.35rem, 5vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.dropzone-copy,
+.model-row-copy p,
+.run-copy,
+.error-box p {
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.dropzone-copy {
+  max-width: 36ch;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.dropzone-file {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.detail-list {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+
+.detail-item {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.detail-item:last-child {
+  border-bottom: 0;
+}
+
+.detail-item dd {
+  color: var(--text-main);
+  font-size: 1rem;
+}
+
+.run-card,
+.error-box,
+.model-row {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: #000;
+}
+
+.error-box,
+.model-row,
+.run-card {
+  padding: 1rem;
+}
+
+.model-row h3 {
+  font-size: 1.05rem;
+  margin: 0;
+  font-weight: 650;
+}
+
+.mono-pill-neutral {
+  border-color: var(--line-strong);
+}
+
+.model-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.model-row {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.model-row-selected {
+  border-color: var(--accent-line);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.model-row-copy {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.model-row-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.model-row-title > * {
+  min-width: 0;
+}
+
+.model-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.run-card {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.run-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.run-card-top strong {
+  font-size: 1rem;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+
+.run-percent {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  flex: 0 0 auto;
+  padding-top: 0.1rem;
+}
+
+.run-card-active {
+  border-color: var(--accent-line);
+}
+
+.run-card-success {
+  border-color: var(--accent-line);
+  background: rgba(29, 185, 84, 0.05);
+}
+
+.run-card-error {
+  border-color: var(--danger-line);
+  background: var(--danger-soft);
+}
+
+.progress-track {
+  width: 100%;
+  height: 0.7rem;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #111;
+  position: relative;
+}
+
+.progress-track--busy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(29, 185, 84, 0.22) 45%,
+    rgba(29, 185, 84, 0.38) 50%,
+    rgba(29, 185, 84, 0.22) 55%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: progress-busy-shimmer 1.35s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes progress-busy-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: width 220ms ease;
+  position: relative;
+  z-index: 1;
+}
+
+.error-box strong {
+  font-size: 1rem;
+}
+
+.error-box {
+  border-color: var(--danger-line);
+  background: var(--danger-soft);
+}
+
+.output-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.output-toolbar .mono-pill {
+  white-space: normal;
+  max-width: 100%;
+}
+
+.transcript-box {
+  width: 100%;
+  min-height: 340px;
+  resize: vertical;
+  line-height: 1.68;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: #000;
+  color: var(--text-main);
+  padding: 0.9rem 1rem;
+}
+
+@media (max-width: 639px) {
+  .model-row-title,
+  .run-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .transcript-box {
+    min-height: 200px;
+  }
+}
+
+@media (min-width: 720px) {
+  .dropzone-title {
+    max-width: none;
+  }
+}
+
+@media (min-width: 1040px) {
+  .transcript-box {
+    min-height: 440px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .transcript-box {
+    min-height: min(62vh, 520px);
+  }
+
+  .detail-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
